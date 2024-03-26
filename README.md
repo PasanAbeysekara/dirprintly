@@ -17,6 +17,9 @@ To print the contents of all files in the current directory:
 ```bash
 dirprintly
 ```
+<div style="text-align:center;max-width:80%;"">
+  <img src="https://github.com/PasanAbeysekara/dirprintly/assets/69195287/1b47dfb8-81a6-49d9-8b96-6eb72fa17e6c" alt="code_20240327_030518_via_10015_io" >
+</div>
 
 ## Features
 
