@@ -1,0 +1,9 @@
+README.md
+setup.py
+dirprintly/__init__.py
+dirprintly/file_printer.py
+dirprintly.egg-info/PKG-INFO
+dirprintly.egg-info/SOURCES.txt
+dirprintly.egg-info/dependency_links.txt
+dirprintly.egg-info/entry_points.txt
+dirprintly.egg-info/top_level.txt
