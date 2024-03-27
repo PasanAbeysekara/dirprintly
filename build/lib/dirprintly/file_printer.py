@@ -21,7 +21,7 @@ def print_file_content(file_path, depth):
     try:
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
             content = file.read().strip()
-            print(f"{Fore.WHITE}{indent}{content[:100]}...")
+            print(f"{Fore.WHITE}{indent}{content[:]}")
             # Prints the first 100 characters followed by ellipsis to indicate more content
     except Exception as e:
         print(f"{Fore.RED}{indent}Error reading file: {e}")

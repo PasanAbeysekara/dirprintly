@@ -5,7 +5,7 @@ with open("README.md","r") as f:
 
 setup(
     name='dirprintly',
-    version='1.1',
+    version='1.3.1',
     packages=find_packages(),
     install_requires=[
         'colorama',
