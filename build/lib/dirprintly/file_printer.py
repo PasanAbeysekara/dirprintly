@@ -22,7 +22,6 @@ def print_file_content(file_path, depth):
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
             content = file.read().strip()
             print(f"{Fore.WHITE}{indent}{content[:]}")
-            # Prints the first 100 characters followed by ellipsis to indicate more content
     except Exception as e:
         print(f"{Fore.RED}{indent}Error reading file: {e}")
 
@@ -30,24 +29,23 @@ def explore_directory_cli():
     """
     Entry point for the dirprintly console script.
     Determines the directory to explore based on command line arguments
-    or defaults to the current working directory.
+    or defaults to the current working directory. Handles 'all' argument.
     """
-    # Check if a directory is provided as a command-line argument.
-    directory = sys.argv[1] if len(sys.argv) > 1 else os.getcwd()
-    explore_directory(directory)
+    # Checks for the 'all' argument to determine recursive exploration
+    recursive = len(sys.argv) > 1 and sys.argv[1] == 'all'
+    explore_directory(os.getcwd(), recursive=recursive)
 
-def explore_directory(directory, depth=0):
-    """Recursively explores and prints directory contents."""
+def explore_directory(directory, depth=0, recursive=False):
+    """Recursively explores and prints directory contents based on the recursive flag."""
     for item in sorted(os.listdir(directory)):
         item_path = os.path.join(directory, item)
         if os.path.isdir(item_path):
             print_item(item, is_dir=True, depth=depth)
-            explore_directory(item_path, depth + 1)
+            if recursive:
+                explore_directory(item_path, depth + 1, recursive=True)
         else:
             print_item(item, is_dir=False, depth=depth)
             print_file_content(item_path, depth)
 
 if __name__ == "__main__":
-    root_directory = os.getcwd() if len(sys.argv) == 1 else sys.argv[1]
-    explore_directory(root_directory)
-    print(f"{Fore.CYAN}--- End of directory listing ---")
+    explore_directory_cli()
